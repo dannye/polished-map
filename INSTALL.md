@@ -70,7 +70,7 @@ cd polished-map
 # Build FLTK 1.4.0
 git clone --branch release-1.4.0rc1 --depth 1 https://github.com/fltk/fltk.git lib/fltk
 pushd lib/fltk
-cmake -D CMAKE_INSTALL_PREFIX="$(realpath "$PWD/../..")" -D CMAKE_BUILD_TYPE=Release -D FLTK_GRAPHICS_CAIRO=1 -D FLTK_BACKEND_WAYLAND=0
+cmake -D CMAKE_INSTALL_PREFIX="$(realpath "$PWD/../..")" -D CMAKE_BUILD_TYPE=Release -D FLTK_GRAPHICS_CAIRO=1 -D FLTK_BACKEND_WAYLAND=0 -D FLTK_USE_SYSTEM_LIBPNG=0 -D FLTK_USE_SYSTEM_ZLIB=0
 make
 make install
 popd

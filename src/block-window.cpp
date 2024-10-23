@@ -207,7 +207,7 @@ void Block_Window::metatile(const Metatile *mt, bool has_collisions, bool bin_co
 				cin->activate();
 			}
 			else {
-				cin->value(NULL);
+				cin->value(nullptr);
 				cin->deactivate();
 			}
 			cin->insert_position(0);
