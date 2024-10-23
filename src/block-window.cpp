@@ -210,7 +210,7 @@ void Block_Window::metatile(const Metatile *mt, bool has_collisions, bool bin_co
 				cin->value(NULL);
 				cin->deactivate();
 			}
-			cin->position(0);
+			cin->insert_position(0);
 		}
 	}
 	char buffer[32];

@@ -1,6 +1,10 @@
 #include <queue>
 #include <utility>
 
+#pragma warning(push, 0)
+#include <FL/platform.H>
+#pragma warning(pop)
+
 #include "themes.h"
 #include "config.h"
 #include "palette-window.h"

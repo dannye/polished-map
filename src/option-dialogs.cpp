@@ -948,7 +948,7 @@ void Event_Options_Dialog::use_event(const Event *e) {
 	else {
 		_prefix->hide();
 	}
-	_prefix->position(0);
+	_prefix->insert_position(0);
 
 	_suffix->value(e->_suffix.c_str());
 	if (e->_suffixed) {
@@ -957,7 +957,7 @@ void Event_Options_Dialog::use_event(const Event *e) {
 	else {
 		_suffix->hide();
 	}
-	_suffix->position(0);
+	_suffix->insert_position(0);
 
 	_event_x->default_value(e->_event_x);
 	_hex_event_x->default_value(e->_event_x);
