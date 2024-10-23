@@ -135,7 +135,7 @@ void Tileset_Window::initialize() {
 	_tile_group->end();
 	// Initialize window
 	_window->box(OS_BG_BOX);
-	_window->callback((Fl_Callback *)close_cb, this);
+	_window->callback((Fl_Callback *)cancel_cb, this);
 	_window->set_modal();
 	// Initialize window's children
 	_tileset_group->box(OS_SPACER_THIN_DOWN_FRAME);
@@ -237,6 +237,8 @@ void Tileset_Window::tileset(Tileset *t) {
 void Tileset_Window::show(const Fl_Widget *p, bool show_priority) {
 	initialize();
 	refresh();
+	Fl_Window *prev_grab = Fl::grab();
+	Fl::grab(NULL);
 	_show_priority = show_priority;
 	int x = p->x() + (p->w() - _window->w()) / 2;
 	int y = p->y() + (p->h() - _window->h()) / 2;
@@ -244,6 +246,7 @@ void Tileset_Window::show(const Fl_Widget *p, bool show_priority) {
 	_ok_button->take_focus();
 	_window->show();
 	while (_window->shown()) { Fl::wait(); }
+	Fl::grab(prev_grab);
 }
 
 void Tileset_Window::draw_tile(int x, int y, uint8_t id) const {

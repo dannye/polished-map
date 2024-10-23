@@ -49,7 +49,7 @@ void Modal_Dialog::initialize() {
 	// Initialize dialog
 	_dialog->box(OS_BG_BOX);
 	_dialog->resizable(NULL);
-	_dialog->callback((Fl_Callback *)close_cb, this);
+	_dialog->callback((Fl_Callback *)cancel_cb, this);
 	_dialog->set_modal();
 	// Initialize dialog's children
 	_icon->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
@@ -150,6 +150,8 @@ void Modal_Dialog::refresh() {
 void Modal_Dialog::show(const Fl_Widget *p) {
 	initialize();
 	refresh();
+	Fl_Window *prev_grab = Fl::grab();
+	Fl::grab(NULL);
 	int x = p->x() + (p->w() - _dialog->w()) / 2;
 	int y = p->y() + (p->h() - _dialog->h()) / 2;
 	_dialog->position(x, y);
@@ -170,6 +172,7 @@ void Modal_Dialog::show(const Fl_Widget *p) {
 	}
 #endif
 	while (_dialog->shown()) { Fl::wait(); }
+	Fl::grab(prev_grab);
 }
 
 void Modal_Dialog::close_cb(Fl_Widget *, Modal_Dialog *md) {

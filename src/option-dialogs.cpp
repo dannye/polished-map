@@ -77,12 +77,15 @@ void Option_Dialog::refresh() {
 void Option_Dialog::show(const Fl_Widget *p) {
 	initialize();
 	refresh();
+	Fl_Window *prev_grab = Fl::grab();
+	Fl::grab(NULL);
 	int x = p->x() + (p->w() - _dialog->w()) / 2;
 	int y = p->y() + (p->h() - _dialog->h()) / 2;
 	_dialog->position(x, y);
 	_ok_button->take_focus();
 	_dialog->show();
 	while (_dialog->shown()) { Fl::wait(); }
+	Fl::grab(prev_grab);
 }
 
 void Option_Dialog::close_cb(Fl_Widget *, Option_Dialog *od) {
@@ -1209,12 +1212,15 @@ void Print_Options_Dialog::refresh() {
 void Print_Options_Dialog::show(const Fl_Widget *p) {
 	initialize();
 	refresh();
+	Fl_Window *prev_grab = Fl::grab();
+	Fl::grab(NULL);
 	int x = p->x() + (p->w() - _dialog->w()) / 2;
 	int y = p->y() + (p->h() - _dialog->h()) / 2;
 	_dialog->position(x, y);
 	_export_button->take_focus();
 	_dialog->show();
 	while (_dialog->shown()) { Fl::wait(); }
+	Fl::grab(prev_grab);
 }
 
 void Print_Options_Dialog::close_cb(Fl_Widget *, Print_Options_Dialog *pd) {
